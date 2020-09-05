@@ -19,6 +19,9 @@
 <br>
 <button id="create">Get MacAddress</button><br><br>
 </p>
+<p>
+<input type="text" id="pdfurl" value ="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"></input>
+<button id="print">Print PDF</button><br><br>
 <script>
    (function () {
      var create = document.getElementById('create');
@@ -26,13 +29,21 @@
       window.dispatchEvent(new Event('getMacAddress')); //event fired to inject.js
       window.addEventListener("getMacAddress_RESP", setMacAddress);
      }, true);
+	 
+	 var print = document.getElementById('print');
+     print.addEventListener('click', function () {
+      window.dispatchEvent(new CustomEvent('PRINT_PDF',{detail: document.getElementById('pdfurl').value})); //event fired to inject.js
+     }, true);
+	 
      
-     function setMacAddress(mac){
+    function setMacAddress(mac){
      console.log(mac)
 	 if(mac&&mac.detail&&mac.detail.text){
-   	document.getElementById('textbox').value = mac.detail.text;
-	}
-     }
+		document.getElementById('textbox').value = mac.detail.text;
+	 }
+    }
+	
+	
    })();
    
    
