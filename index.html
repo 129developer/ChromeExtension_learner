@@ -1,0 +1,42 @@
+<a href="/BayaEXT.rar" download="BayaEXT.rar"> Download BayaEXT
+  <img src="https://dl1.cbsistatic.com/i/2017/06/14/7b9c8f4d-838c-43da-9e2d-4053ad1e1624/a73f830efd30ae8dcb10b5cc17ef3558/imgingest-8648420337569711989.png" alt="W3Schools" width="104" height="142">
+</a>
+<br>
+<a href="https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/">How to install the unpacked extension in Chrome</a>
+
+<br>
+</p>
+<a href="/host.rar" download="host.rar"> Download Host App
+  <img src="https://dl1.cbsistatic.com/i/2017/06/14/7b9c8f4d-838c-43da-9e2d-4053ad1e1624/a73f830efd30ae8dcb10b5cc17ef3558/imgingest-8648420337569711989.png" alt="W3Schools" width="104" height="142">
+</a>
+<br>
+<b>Extract host.rar <br>  Run  install_host.bat </b>
+<p>
+<!-- https://jsfiddle.net/seanodotcom/yd1n8Lfh -->
+<textarea id="textbox" style="width: 300px; height: 600px;">
+
+</textarea>
+<br>
+<button id="create">Get MacAddress</button><br><br>
+</p>
+<script>
+   (function () {
+     var create = document.getElementById('create');
+     create.addEventListener('click', function () {
+      window.dispatchEvent(new Event('getMacAddress')); //event fired to inject.js
+      window.addEventListener("getMacAddress_RESP", setMacAddress);
+     }, true);
+     
+     function setMacAddress(mac){
+     console.log(mac)
+	 if(mac&&mac.detail&&mac.detail.text){
+   	document.getElementById('textbox').value = mac.detail.text;
+	}
+     }
+   })();
+   
+   
+   
+   
+   
+</script>
